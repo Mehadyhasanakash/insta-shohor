@@ -12,11 +12,13 @@ const getReportedPosts = () => {
 };
 
 const isLiked = (id) => {
+  // console.log(id);
   
     return likedPostsId?.length && !!likedPostsId.includes(id);
 };
 
 const addToLiked = (id) => {
+  console.log(id)
     likedPostsId.push(id); 
     showPosts(posts);
 };
@@ -52,7 +54,7 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
-  console.log(post);
+  // console.log(post);
     const image = post.image;
     const div = document.createElement( "article" );
     div.classList.add( "post" );
@@ -86,7 +88,7 @@ const createPost = (post) => {
 
               <div class="post__footer">
                 <div class="post__buttons">
-                  <button class="post__button" onclick="addToLiked(${posts.id})">
+                  <button class="post__button" onclick="addToLiked(${post.id})">
                   <i class="fa-solid fa-heart ${isLiked(post.id) && "text-danger"}"></i>
                     
                   </button>
@@ -145,6 +147,7 @@ const showPosts = (posts) => {
 };
 
 const displayLikedPosts = () => {
+  document.getElementById( "liked" ).innerHTML="";
     const likedPosts = getLikedPosts();
     likedPosts.forEach((post) => {
         const div = createPost(post);
